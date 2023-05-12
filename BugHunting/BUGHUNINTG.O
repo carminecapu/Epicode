@@ -1,0 +1,81 @@
+#include <stdio.h>
+
+void menu ();
+void moltiplica ();
+void dividi ();
+void ins_string();
+
+
+int main () 
+
+{
+	char scelta = '\0';
+	menu ();
+	scanf ("%c", &scelta);
+
+	switch (scelta)
+	{
+		case 'A':
+		moltiplica();
+		break;
+		case 'B':
+                dividi();
+                break;
+		case 'C':
+                ins_string();
+                break;
+		default:
+		printf("Seleziona una delle opzioni proposte");
+		
+	}
+
+return 0;
+
+}
+
+
+void menu ()
+{
+	printf ("Benvenuto, sono un assitente digitale, posso aiutarti a sbrigare alcuni compiti\n");
+	printf ("Come posso aiutarti?\n");
+	printf ("A >> Moltiplicare due numeri\nB >> Dividere due numeri\nC >> Inserire una stringa\n");
+
+}
+
+
+void moltiplica ()
+{
+	float a,b = 0;
+	printf ("Inserisci i due numeri da moltiplicare:");
+	scanf ("%f", &a);
+	scanf ("%f", &b);
+
+	float prodotto = a * b;
+
+	printf ("Il prodotto tra %f e %f e': %f", a,b,prodotto);
+}
+
+
+void dividi ()
+{
+        float  a,b = 0;
+        printf ("Inserisci il numeratore:");
+        scanf ("%f", &a);
+	printf ("Inserisci il denominatore:");
+        scanf ("%f", &b);
+
+        float divisione = a / b;
+
+        printf ("La divisione tra %f e %f e': %f", a,b,divisione);
+}
+
+
+
+
+
+void ins_string () 
+{
+	char stringa[10];
+        printf ("Inserisci la stringa:");
+        scanf ("%s", stringa);
+}
