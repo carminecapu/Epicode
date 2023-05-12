@@ -1,0 +1,79 @@
+ù#include <stdio.h>
+
+void menu ();
+void moltiplica ();
+void dividi ();
+void ins_string();
+
+
+int main () 
+
+{
+	char scelta = {'\0'}; // char scelta = {'\0'}; in cui lo stesso sarebbe “end of string” risulta un comando sbagliato in quanto le parentesi non hanno senso; comando giusto è char scelta = ‘\0’;
+	
+	menu ();
+	scanf ("%d", &scelta); //scanf ("%d", &scelta); è sbagliato, va messo ("%c"), in quanto &d si usa per gli interi e non per i caratteri, dove invece si usa %c. Senza %c, motivo per cui, inserendo un intero anziché un carattere, il programma in esame non partirebbe;
+
+	switch (scelta)
+	{
+		case 'A':
+		moltiplica();
+		break;
+		case 'B':
+                dividi();
+                break;
+		case 'C':
+                ins_string();
+                break;
+	}
+
+return 0;
+
+}
+
+
+void menu ()
+{
+	printf ("Benvenuto, sono un assitente digitale, posso aiutarti a sbrigare alcuni compiti\n");
+	printf ("Come posso aiutarti?\n");
+	printf ("A >> Moltiplicare due numeri\nB >> Dividere due numeri\nC >> Inserire una stringa\n");
+
+}
+
+
+void moltiplica ()
+{
+	short int  a,b = 0;
+	printf ("Inserisci i due numeri da moltiplicare:");
+	scanf ("%f", &a); //primo scanf(“%f”; &A) (errore segnalato con cerchio giallo in figura), che non è mai stato dichiarato, essendo stato dichiarato soltanto short int a,b = 0. Ergo, in entrambi i casi si dovrebbe usare scanf ("%hd", &a); e scanf ("hd", &b);
+	scanf ("%d", &b); //scanf ("%f", &a);    e     scanf ("%d", &b); anche in questo caso (all’interno del void moltiplica) vi è un altro errore, in quanto, in quanto a e b sono dichiarati come short int, motivo per cui, essendo più piccoli di un intero, non si può usare &d bensì &hd
+
+	short int prodotto = a * b;
+
+	printf ("Il prodotto tra %d e %d e': %d", a,b,prodotto);
+}
+
+
+void dividi ()
+{
+        int  a,b = 0;
+        printf ("Inserisci il numeratore:");
+        scanf ("%d", &a);
+	printf ("Inserisci il denumeratore:");
+        scanf ("%d", &b);
+
+        int divisione = a % b;
+
+        printf ("La divisione tra %d e %d e': %d", a,b,divisione); // int divisione = a % b, specifichiamo che % non è l'operatore della divisione, ma del resto, ergo per svolgere correttamente una divisione è necessario correggere e scrivere int divisione = a/b;
+}
+
+
+
+
+
+void ins_string () 
+{
+	char stringa[10]; //
+        printf ("Inserisci la stringa:");
+        scanf ("%s", &stringa); //in questo caso invece non deve esserci la &. Pertanto, per avere la forma corretta dobbiamo scrivere scanf("%s", stringa).
+}
