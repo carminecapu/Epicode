@@ -1,0 +1,29 @@
+messaggio_benvenuto = """\n\nNon siete bravi in matematica? Allora questo progra>
+Ecco in cosa vi aiuteremo:
+
+- Clicca A per per calcolare il perimetro del tuo quadrato
+- Clicca B per calcolare la circonferenza del tuo cerchio
+- Clicca C per calcolare il perimetro del tuo rettangolo
+
+"""
+while True:
+        print(messaggio_benvenuto)
+
+        x = input("Inserisci la lettera corrispondente all'operazione che vuoi e>
+
+        if x == "A" or x == 'a':
+                        from quadrato import quadrato
+                        quadrato ()
+                        break
+        elif x == "B" or x =='b':
+                        import math
+                        math.pi
+                        from circonferenza import circonferenza
+                        circonferenza ()
+                        break
+        elif x == "C" or x == 'c':
+                        from circonferenza import circonferenza
+                        circonferenza ()
+                        break
+        else:
+                        print("Inserisci una tre le opzioni corrette!")
