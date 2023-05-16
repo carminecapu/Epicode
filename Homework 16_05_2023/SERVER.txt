@@ -1,0 +1,13 @@
+import socket
+
+target_ip = "192.168.32.100"
+target_port = 44444
+
+sock = socket.socket( socket.AF_INET, socket.SOCK_DGRAM )
+sock.bind( (target_ip, target_port) )
+while True:
+    # Riceve 1024 bytes alla volta.
+    messaggio, indirizzo = sock.recvfrom( 1024 )
+    print("Messaggio ricevuto :", messaggio)
+
+

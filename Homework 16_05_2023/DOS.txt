@@ -1,0 +1,14 @@
+import socket
+import random
+
+ip = input("\nInserisci IP: \n")
+port = int(input("\nInserisci porta: \n"))
+num_packets = int(input("\nInserisci numero pacchi da inviare: \n"))
+u_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+dim_pacc = 1024
+
+for _ in range(num_packets):
+    data = bytes([random.randint(0, 150) for _ in range(dim_pacc)])
+    u_socket.sendto(data, (ip, port))
+
+u_socket.close()
