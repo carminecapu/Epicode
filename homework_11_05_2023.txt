@@ -1,0 +1,124 @@
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+char scelta;
+char risposta;
+int punteggio = 0;
+char nome[20];
+printf("Chi vuol essere milionario? Magari fosse\n");
+
+do {
+
+while(scelta != 'A' && scelta != 'a' && scelta != 'B' && scelta != 'b') {
+printf("Si prega di scegliere tra le opzioni proposte\n");
+scanf(" %c", &scelta);
+
+}
+
+printf("\nA) Inizia partita\n");
+printf("B) Esci\n");
+printf("Che famo?\n\n");
+scanf("%c", &scelta);
+
+if (scelta == 'B' || scelta == 'b') {
+printf("Grazie per aver giocato,torna a trovarci\n");
+return 0;
+
+}
+
+while(scelta != 'A' && scelta != 'a' && scelta != 'B' && scelta != 'b') {
+printf("Si prega di scegliere tra le opzioni proposte\n");
+scanf(" %c", &scelta);
+
+}
+
+
+if(scelta == 'A' || scelta == 'a') {
+
+
+printf("\nPerfetto! Ora inserisci il tuo nome:\n");
+scanf(" %s", nome);
+while (strlen(nome)>10) {
+
+printf("\nIl tuo nome è troppo lungo, inseriscilo nuovamente (massimo 10 caratteri)\n");
+scanf("%s", nome);
+
+}
+
+
+printf("\nBenvenuto %s! Iniziamo!\n", nome);
+
+//Domanda 1)
+printf("\nQuanto fa 2+2? Seleziona l'opzione corretta\n");
+printf("A. 6\n");
+printf("B. 4\n");
+printf("C. 5\n");
+printf("Risposta: \n");
+scanf(" %c", &risposta);
+
+while(risposta != 'A' && risposta != 'a' && risposta != 'B' && risposta != 'b' && risposta != 'C' & risposta != 'c') {
+printf("Si prega di selezione A,B o C per rispondere correttamente alla domanda\n");
+scanf(" %c", &risposta);
+}
+ 
+if(risposta == 'B' || risposta == 'b') {
+punteggio++;
+printf("Risposta giusta!\n"); 
+
+}
+
+printf("Il tuo punteggio attuale: %d/3\n", punteggio);
+
+
+//Domanda 2)
+printf("\nQuanto fa 3+3? Selezione l'opzione corretta\n");
+printf("A. 4\n");
+printf("B. 6\n");
+printf("C. 5\n");
+printf("Risposta: \n");
+scanf(" %c", &risposta);
+
+while(risposta != 'A' && risposta != 'a' && risposta != 'B' && risposta != 'b' && risposta != 'C' & risposta != 'c') {
+printf("Si prega di selezione A,B o C per rispondere correttamente alla domanda\n");
+scanf(" %c", &risposta);
+ 
+}
+
+
+if(risposta == 'B' || risposta== 'b') {
+punteggio++;
+printf("Risposta giusta!\n");
+
+}
+ 
+printf("Il tuo punteggio attuale: %d/3\n", punteggio);
+
+//Domanda 3)
+printf("\nQuanto fa 4+4? Seleziona l'opzione corretta\n");
+printf("A. 4\n");
+printf("B. 8\n");
+printf("C. 6\n");
+printf("Risposta: \n");
+scanf(" %c", &risposta);
+
+while(risposta != 'A' && risposta != 'a' && risposta != 'B' && risposta != 'b' && risposta != 'C' & risposta != 'c') {
+printf("Si prega di selezione A,B o C per rispondere correttamente alla domanda\n");
+scanf(" %c", &risposta);
+ 
+}
+
+
+if(risposta == 'B' || risposta == 'b') {
+punteggio++;
+
+printf("Risposta giusta!\n"); 
+
+}
+
+printf("\nGrazie %s,il tuo punteggio finale è: %d/3\n", nome, punteggio);
+
+}
+} while (1);
+return 0; 
+}
